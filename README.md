@@ -20,4 +20,6 @@ Signs will not be culled if Enhanced Block Entities is installed with sign culli
 
 ---
 
-Requires [oωo](https://modrinth.com/mod/owo-lib) and [TLib](https://modrinth.com/mod/tlib) to work.
+[CurseForge](https://www.curseforge.com/minecraft/mc-mods/culler)
+
+[Modrinth](https://modrinth.com/mod/culler)
