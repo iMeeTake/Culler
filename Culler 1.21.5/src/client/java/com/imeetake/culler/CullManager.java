@@ -131,7 +131,7 @@ public class CullManager {
 
         double distance = CONFIG.boatDistance();
 
-        if (CONFIG.cullStaticBoats() && boat.getVelocity().lengthSquared() < 0.01) {
+        if (CONFIG.cullEmptyBoats() && boat.getFirstPassenger() == null) {
             distance *= 0.75;
         }
 

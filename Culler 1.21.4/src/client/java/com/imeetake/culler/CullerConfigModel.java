@@ -78,10 +78,10 @@ public class CullerConfigModel {
     public double experienceOrbDistance = 12.0;
 
     @RangeConstraint(min = 8, max = 128)
-    public double boatDistance = 32.0;
+    public double boatDistance = 48.0;
 
     @RangeConstraint(min = 8, max = 128)
-    public double minecartDistance = 32.0;
+    public double minecartDistance = 48.0;
 
     @RangeConstraint(min = 8, max = 128)
     public double tntDistance = 48.0;
@@ -121,7 +121,7 @@ public class CullerConfigModel {
 
     public boolean cullEmptySigns = true;
     public boolean cullSmallItemFrames = true;
-    public boolean cullStaticBoats = true;
+    public boolean cullEmptyBoats = true;
     public boolean cullEmptyMinecarts = true;
 
     @RangeConstraint(min = 0.1, max = 2.0)
