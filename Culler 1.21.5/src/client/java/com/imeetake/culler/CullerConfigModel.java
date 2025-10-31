@@ -89,6 +89,15 @@ public class CullerConfigModel {
     @RangeConstraint(min = 8, max = 128)
     public double arrowDistance = 64.0;
 
+    @RangeConstraint(min = 8, max = 128)
+    public double itemDisplayDistance = 48.0;
+
+    @RangeConstraint(min = 8, max = 128)
+    public double blockDisplayDistance = 48.0;
+
+    @RangeConstraint(min = 8, max = 128)
+    public double textDisplayDistance = 64.0;
+
     @RangeConstraint(min = 90, max = 180)
     public double fovCullAngle = 135.0;
 
@@ -118,6 +127,10 @@ public class CullerConfigModel {
     public boolean cullMinecarts = true;
     public boolean cullTnt = true;
     public boolean cullArrows = true;
+
+    public boolean cullItemDisplays = true;
+    public boolean cullBlockDisplays = true;
+    public boolean cullTextDisplays = true;
 
     public boolean cullEmptySigns = true;
     public boolean cullSmallItemFrames = true;

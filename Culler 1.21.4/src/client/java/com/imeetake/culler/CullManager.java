@@ -2,6 +2,7 @@ package com.imeetake.culler;
 
 import com.imeetake.tlib.client.render.TClientRenderUtils;
 import net.minecraft.block.entity.*;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ItemEntity;
@@ -129,6 +130,11 @@ public class CullManager {
     public static boolean shouldRenderBoat(BoatEntity boat) {
         if (!CONFIG.enableCulling() || !CONFIG.cullBoats()) return true;
 
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.player != null && boat.hasPassenger(client.player)) {
+            return true;
+        }
+
         double distance = CONFIG.boatDistance();
 
         if (CONFIG.cullEmptyBoats() && boat.getFirstPassenger() == null) {
@@ -140,6 +146,11 @@ public class CullManager {
 
     public static boolean shouldRenderMinecart(MinecartEntity minecart) {
         if (!CONFIG.enableCulling() || !CONFIG.cullMinecarts()) return true;
+
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.player != null && minecart.hasPassenger(client.player)) {
+            return true;
+        }
 
         double distance = CONFIG.minecartDistance();
 
@@ -158,6 +169,21 @@ public class CullManager {
     public static boolean shouldRenderArrow(Entity arrow) {
         if (!CONFIG.enableCulling() || !CONFIG.cullArrows()) return true;
         return shouldRenderEntity(arrow, CONFIG.arrowDistance());
+    }
+
+    public static boolean shouldRenderItemDisplay(Entity itemDisplay) {
+        if (!CONFIG.enableCulling() || !CONFIG.cullItemDisplays()) return true;
+        return shouldRenderEntity(itemDisplay, CONFIG.itemDisplayDistance());
+    }
+
+    public static boolean shouldRenderBlockDisplay(Entity blockDisplay) {
+        if (!CONFIG.enableCulling() || !CONFIG.cullBlockDisplays()) return true;
+        return shouldRenderEntity(blockDisplay, CONFIG.blockDisplayDistance());
+    }
+
+    public static boolean shouldRenderTextDisplay(Entity textDisplay) {
+        if (!CONFIG.enableCulling() || !CONFIG.cullTextDisplays()) return true;
+        return shouldRenderEntity(textDisplay, CONFIG.textDisplayDistance());
     }
 
     private static boolean shouldRenderWithDistance(BlockPos pos, double maxDistance) {

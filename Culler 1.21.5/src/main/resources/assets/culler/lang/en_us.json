@@ -61,6 +61,12 @@
   "text.config.culler.option.tntDistance.tooltip": "Maximum rendering distance for TNT blocks in blocks.",
   "text.config.culler.option.arrowDistance": "Arrow Distance",
   "text.config.culler.option.arrowDistance.tooltip": "Maximum rendering distance for arrows and spectral arrows in blocks.",
+  "text.config.culler.option.itemDisplayDistance": "Item Display Distance",
+  "text.config.culler.option.itemDisplayDistance.tooltip": "Maximum rendering distance for item display entities in blocks.",
+  "text.config.culler.option.blockDisplayDistance": "Block Display Distance",
+  "text.config.culler.option.blockDisplayDistance.tooltip": "Maximum rendering distance for block display entities in blocks.",
+  "text.config.culler.option.textDisplayDistance": "Text Display Distance",
+  "text.config.culler.option.textDisplayDistance.tooltip": "Maximum rendering distance for text display entities in blocks.",
 
   "text.config.culler.option.fovCullAngle": "FOV Cull Angle",
   "text.config.culler.option.fovCullAngle.tooltip": "Field of view angle for culling in degrees. Objects outside this angle won't be rendered.",
@@ -118,6 +124,13 @@
   "text.config.culler.option.cullTnt.tooltip": "Enable culling for TNT blocks based on distance and FOV.",
   "text.config.culler.option.cullArrows": "Cull Arrows",
   "text.config.culler.option.cullArrows.tooltip": "Enable culling for arrows and spectral arrows based on distance and FOV.",
+
+  "text.config.culler.option.cullItemDisplays": "Cull Item Displays",
+  "text.config.culler.option.cullItemDisplays.tooltip": "Enable culling for item display entities based on distance and FOV. Useful on custom servers with many decorative items.",
+  "text.config.culler.option.cullBlockDisplays": "Cull Block Displays",
+  "text.config.culler.option.cullBlockDisplays.tooltip": "Enable culling for block display entities based on distance and FOV. Useful on custom servers with many decorative blocks.",
+  "text.config.culler.option.cullTextDisplays": "Cull Text Displays",
+  "text.config.culler.option.cullTextDisplays.tooltip": "Enable culling for text display entities based on distance and FOV. Useful on servers with floating text.",
 
   "text.config.culler.option.cullEmptySigns": "Enhanced Empty Sign Culling",
   "text.config.culler.option.cullEmptySigns.tooltip": "Empty signs without text are culled at half the normal distance to save performance.",

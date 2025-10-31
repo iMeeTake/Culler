@@ -9,6 +9,7 @@ import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;
+import net.minecraft.entity.decoration.DisplayEntity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.entity.decoration.ItemFrameEntity;
 import net.minecraft.entity.decoration.painting.PaintingEntity;
@@ -42,5 +43,8 @@ public abstract class EntityRenderDispatcherMixin {
         if (entity instanceof MinecartEntity m && !CullManager.shouldRenderMinecart(m)) { ci.cancel(); return; }
         if (entity instanceof TntEntity t && !CullManager.shouldRenderTnt(t)) { ci.cancel(); return; }
         if ((entity instanceof ArrowEntity || entity instanceof SpectralArrowEntity) && !CullManager.shouldRenderArrow(entity)) { ci.cancel(); }
+        if (entity instanceof DisplayEntity.ItemDisplayEntity && !CullManager.shouldRenderItemDisplay(entity)) { ci.cancel(); return; }
+        if (entity instanceof DisplayEntity.BlockDisplayEntity && !CullManager.shouldRenderBlockDisplay(entity)) { ci.cancel(); return; }
+        if (entity instanceof DisplayEntity.TextDisplayEntity && !CullManager.shouldRenderTextDisplay(entity)) { ci.cancel(); }
     }
 }

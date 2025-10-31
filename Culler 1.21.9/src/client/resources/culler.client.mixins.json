@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "com.imeetake.culler.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+        "BlockEntityRendererMixin",
+        "EntityRendererMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
