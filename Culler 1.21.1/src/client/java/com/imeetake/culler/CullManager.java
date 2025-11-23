@@ -21,6 +21,10 @@ import static com.imeetake.culler.CullerClient.CONFIG;
 
 public class CullManager {
 
+    private static double cachedFovThreshold = -2.0;
+    private static int lastPlayerFov = -1;
+    private static int lastBufferValue = -1;
+
     public static void initialize() {
     }
 
@@ -191,8 +195,11 @@ public class CullManager {
             Vec3d cameraPos = getCameraPosition();
             Vec3d blockPos = Vec3d.of(pos).add(0.5, 0.5, 0.5);
 
-            double distance = cameraPos.distanceTo(blockPos) * CONFIG.distanceMultiplier();
-            if (distance > maxDistance) return false;
+            double effectiveLimit = maxDistance / CONFIG.distanceMultiplier();
+
+            if (cameraPos.squaredDistanceTo(blockPos) > effectiveLimit * effectiveLimit) {
+                return false;
+            }
 
             if (CONFIG.enableFovCulling() && !isInFOV(cameraPos, blockPos)) {
                 return false;
@@ -206,16 +213,25 @@ public class CullManager {
 
     private static boolean shouldRenderEntity(Entity entity, double maxDistance) {
         try {
+            if (entity.isGlowing()) return true;
+
+            if ((entity instanceof MinecartEntity || entity instanceof BoatEntity || entity instanceof TntEntity)
+                    && entity.getVelocity().lengthSquared() > 0.2) {
+                return true;
+            }
+
             Vec3d cameraPos = getCameraPosition();
             Vec3d entityPos = entity.getPos();
 
-            double distance = cameraPos.distanceTo(entityPos) * CONFIG.distanceMultiplier();
-            if (distance > maxDistance) return false;
+            double effectiveLimit = maxDistance / CONFIG.distanceMultiplier();
+
+            if (cameraPos.squaredDistanceTo(entityPos) > effectiveLimit * effectiveLimit) {
+                return false;
+            }
 
             if (CONFIG.enableFovCulling() && !isInFOV(cameraPos, entityPos)) {
                 return false;
             }
-
 
             return true;
         } catch (Exception e) {
@@ -241,16 +257,22 @@ public class CullManager {
         return TClientRenderUtils.getCameraLookVector();
     }
 
-
     private static boolean isInFOV(Vec3d cameraPos, Vec3d targetPos) {
+        int currentFov = MinecraftClient.getInstance().options.getFov().getValue();
+        int currentBuffer = CONFIG.fovBuffer();
+
+        if (currentFov != lastPlayerFov || currentBuffer != lastBufferValue) {
+            lastPlayerFov = currentFov;
+            lastBufferValue = currentBuffer;
+            double totalFov = currentFov + currentBuffer;
+            cachedFovThreshold = Math.cos(Math.toRadians(totalFov / 2.0));
+        }
+
         Vec3d lookVector = getCameraLookVector();
         Vec3d toTarget = targetPos.subtract(cameraPos).normalize();
 
         double dotProduct = lookVector.dotProduct(toTarget);
-        double angle = Math.toDegrees(Math.acos(Math.max(-1.0, Math.min(1.0, dotProduct))));
 
-        double cullAngle = CONFIG.fovCullAngle();
-
-        return angle <= cullAngle / 2.0;
+        return dotProduct >= cachedFovThreshold;
     }
 }

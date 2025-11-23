@@ -11,95 +11,95 @@ public class CullerConfigModel {
     public boolean enableCulling = true;
     public boolean enableFovCulling = true;
 
-    @RangeConstraint(min = 8, max = 128)
-    public double signDistance = 48.0;
+    @RangeConstraint(min = 0, max = 120)
+    public int fovBuffer = 60;
 
     @RangeConstraint(min = 8, max = 128)
-    public double paintingDistance = 48.0;
+    public int signDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double itemFrameDistance = 40.0;
+    public int paintingDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double armorStandDistance = 48.0;
+    public int itemFrameDistance = 40;
 
     @RangeConstraint(min = 8, max = 128)
-    public double bannerDistance = 48.0;
+    public int armorStandDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double chestDistance = 48.0;
+    public int bannerDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double beaconDistance = 64.0;
+    public int chestDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double lecternDistance = 48.0;
+    public int beaconDistance = 64;
 
     @RangeConstraint(min = 8, max = 128)
-    public double campfireDistance = 48.0;
+    public int lecternDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double endCrystalDistance = 64.0;
+    public int campfireDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double shulkerBoxDistance = 32.0;
+    public int endCrystalDistance = 64;
 
     @RangeConstraint(min = 8, max = 128)
-    public double enchantingTableDistance = 32.0;
+    public int shulkerBoxDistance = 32;
 
     @RangeConstraint(min = 8, max = 128)
-    public double brewingStandDistance = 32.0;
+    public int enchantingTableDistance = 32;
 
     @RangeConstraint(min = 8, max = 128)
-    public double furnaceDistance = 32.0;
+    public int brewingStandDistance = 32;
 
     @RangeConstraint(min = 8, max = 128)
-    public double hopperDistance = 24.0;
+    public int furnaceDistance = 32;
 
     @RangeConstraint(min = 8, max = 128)
-    public double dispenserDistance = 32.0;
+    public int hopperDistance = 24;
 
     @RangeConstraint(min = 8, max = 128)
-    public double jukeboxDistance = 32.0;
+    public int dispenserDistance = 32;
 
     @RangeConstraint(min = 8, max = 128)
-    public double bellDistance = 32.0;
+    public int jukeboxDistance = 32;
 
     @RangeConstraint(min = 8, max = 128)
-    public double conduitDistance = 48.0;
+    public int bellDistance = 32;
 
     @RangeConstraint(min = 8, max = 128)
-    public double sculkDistance = 32.0;
+    public int conduitDistance = 48;
+
+    @RangeConstraint(min = 8, max = 128)
+    public int sculkDistance = 32;
 
     @RangeConstraint(min = 4, max = 64)
-    public double droppedItemDistance = 16.0;
+    public int droppedItemDistance = 16;
 
     @RangeConstraint(min = 4, max = 64)
-    public double experienceOrbDistance = 12.0;
+    public int experienceOrbDistance = 12;
 
     @RangeConstraint(min = 8, max = 128)
-    public double boatDistance = 48.0;
+    public int boatDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double minecartDistance = 48.0;
+    public int minecartDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double tntDistance = 48.0;
+    public int tntDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double arrowDistance = 64.0;
+    public int arrowDistance = 64;
 
     @RangeConstraint(min = 8, max = 128)
-    public double itemDisplayDistance = 48.0;
+    public int itemDisplayDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double blockDisplayDistance = 48.0;
+    public int blockDisplayDistance = 48;
 
     @RangeConstraint(min = 8, max = 128)
-    public double textDisplayDistance = 64.0;
-
-    @RangeConstraint(min = 90, max = 180)
-    public double fovCullAngle = 135.0;
+    public int textDisplayDistance = 64;
 
     public boolean cullSigns = true;
     public boolean cullPaintings = true;
